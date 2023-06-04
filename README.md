@@ -10,8 +10,10 @@ and a `Review` belongs to a `User` and to a `Product`.
 
 `Product` - `User` is a many to many relationship.
 
-## Topics
+## ERD
 
+
+## Topics
 - Active Record Migrations
 - Active Record Associations
 - Class and Instance Methods
