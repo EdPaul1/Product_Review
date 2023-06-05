@@ -4,6 +4,12 @@ puts "Deleting old data..."
 Product.destroy_all
 User.destroy_all
 
+# Reset auto-increment sequence for User table
+ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name = 'users'")
+# Reset auto-increment sequence for Product table
+ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name = 'products'")
+
+
 puts "Creating users..."
 user1 = User.create(name: Faker::Name.name)
 user2 = User.create(name: Faker::Name.name)
@@ -17,11 +23,6 @@ product4 = Product.create(name: "Ballpoint Pens", price: 2)
 product5 = Product.create(name: "Scotch Tape", price: 3)
 
 puts "Creating reviews..."
-# *****************************************************************
-# * TODO: create reviews! Remember, a review belongs to a product *
-# * and a review belongs to an user.                              *
-# *****************************************************************
-# Create Reviews Here
 
 15.times do 
     user_ids = User.all.map {|user| user.id}
